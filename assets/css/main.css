@@ -1,0 +1,140 @@
+/* --------------------------------- */
+/* nüt ändere hie                    */
+
+
+@font-face{
+font-family:'TempoW01-HeavyCondensed 707008';
+src:url('../fonts/276e1c07-aed5-48ed-bfae-fb57d3d6310a.eot?#iefix');
+src:url('../fonts/276e1c07-aed5-48ed-bfae-fb57d3d6310a.eot?#iefix') format('eot'),url('../fonts/b36c4ec1-a0b3-42a9-b4b2-b4c251bcc5f5.woff') format('woff'),url('../fonts/c78b9a30-a233-4793-825c-8f1e1e0201cf.ttf') format('truetype'),url('../fonts/1ea97f50-fbd7-47f4-bf2b-f354922417b7.svg#1ea97f50-fbd7-47f4-bf2b-f354922417b7') format('svg');
+font-weight: 800;
+font-style: normal;
+}
+
+.tempo {
+	font-family: 'TempoW01-HeavyCondensed 707008', sans-serif;
+	font-weight: 800;
+	font-style: normal;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	margin: 0;
+	background: #000;
+}
+
+img {
+    vertical-align: middle;
+}
+
+
+/* column layout */
+
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+}
+
+.row {
+	width: 1024px;
+	margin: 0 auto;
+}
+
+.column {
+	width: 50%;
+
+	float: left;
+	min-height: 1px;
+	padding: 0;
+	position: relative;
+}
+
+
+
+/* layout */
+
+.claim {
+	position: absolute;
+	top: 8%;
+	width: 66.6667%;
+
+	-webkit-transform: rotate(-15.5deg) skewX(-15.5deg);
+	margin-left: -6px;
+	z-index: 500;
+}
+
+.claim > div {
+	color: #e75294;
+	background: #ff0;
+
+	padding-left: 10px;
+	padding-right: 5px;
+
+	line-height: 1;
+
+	text-transform: uppercase;
+
+	margin-bottom: 10px;
+}
+
+
+
+/* http://freqdec.github.io/slabText/ */
+
+.slabtexted .slabtext {
+	/* display: -moz-inline-box; */
+	display: inline-block;
+    white-space: nowrap;
+}
+
+.slabtextinactive .slabtext {
+	display: inline;
+	white-space: normal;
+	font-size: 1em !important;
+	letter-spacing: inherit !important;
+	word-spacing: inherit !important;
+	/* *letter-spacing: 0 !important; */
+	/* *word-spacing: 0 !important; */
+}
+
+.slabtextdone .slabtext {
+	display: block;
+}
+
+
+
+/*
+.byline {
+	position: absolute;
+	bottom: 28%;
+	z-index: 2;
+	width: 40%;
+
+	font-size: 20px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+
+	padding-left: 6px;
+
+	color: #e75294;
+
+	-webkit-transform: rotate(-15.5deg) skewX(-15.5deg);
+
+}
+*/
+
+.catcher {
+	position: absolute;
+	bottom: 0;
+
+	/*
+	width: 50%;
+
+	font-size: 160px;
+	line-height: 0.8;
+
+	color: #fff;
+	-webkit-text-stroke: 5px #000;
+	*/
+}

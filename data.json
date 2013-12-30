@@ -1,0 +1,12 @@
+[
+	{ "image": "img001.jpg",
+	  "captions": ["So guet - So schön", "Super"] },
+	{ "image": "img002.jpg",
+	  "captions": ["Schneller Schöner Weiter Mehr Mehr Mehr und noch Mehr", "Schöner"] },
+	{ "image": "img003.jpg",
+	  "captions": ["What else", "What if"] },
+	{ "image": "001.jpg",
+	  "captions": [""] },
+	{ "image": "002.jpg",
+	  "captions": [" "] }
+]
