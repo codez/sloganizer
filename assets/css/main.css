@@ -37,7 +37,8 @@ img {
 }
 
 .row {
-	width: 1024px;
+	/*width: 1024px;*/
+	height: 100%;
 	margin: 0 auto;
 }
 
@@ -56,7 +57,7 @@ img {
 
 .claim {
 	position: absolute;
-	top: 8%;
+	top: 6%;
 	width: 66.6667%;
 
 	-webkit-transform: rotate(-15.5deg) skewX(-15.5deg);
@@ -137,4 +138,8 @@ img {
 	color: #fff;
 	-webkit-text-stroke: 5px #000;
 	*/
+}
+
+.catcher img {
+	width: 75%;
 }

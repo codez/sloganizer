@@ -1,11 +1,11 @@
-var duration = 3; // seconds
+var duration = 2; // seconds
 
-var sloganSource = 'data.json';
+var sloganSource = 'images/data.json';
 var imagesPath = 'images/';
 
 var defaultCaptionSource = 'claims.json';
 var defaultCaptions = [];
-var defaultCaptionProbability = 0.1;
+var defaultCaptionProbability = 0.0;
 
 var catcherPath = 'catcher/';
 var catcherSource = 'catchers.json';
@@ -16,7 +16,7 @@ var side = 0;
 
 Array.prototype.randomize = function() {
 	var i = this.length, j, temp;
-	if (i > 2 || Math.random() > 0.5) {
+	if (i > 1 && (i > 2 || Math.random() > 0.5)) {
 		while ( --i ) {
 			j = Math.floor( Math.random() * i );
 			temp = this[i];
@@ -31,7 +31,7 @@ var reloadSlogans = function() {
 }
 
 var processSlogans = function(data) {
-	data.randomize();
+	//data.randomize();
 	preloadImages(data);
 	iterateSlogans(data, 0)
 };
@@ -39,7 +39,7 @@ var processSlogans = function(data) {
 var iterateSlogans = function(data, i) {
 	if (i < data.length) {
 		showSlogan(data[i]);
-		side = (side + 1) % 2;
+		//side = (side + 1) % 2;
 		setTimeout(function() {
 			iterateSlogans(data, i + 1);
 		}, duration * 1000);
@@ -69,7 +69,7 @@ var showSlogan = function(slogan) {
 var getRandomCaption = function(slogan) {
 	slogan.captions.randomize();
 	var caption = slogan.captions[0].trim();
-	addToDefaultCaptions(caption);
+	//addToDefaultCaptions(caption);
 	return optionallyUseDefaultCaption(caption);
 }
 
@@ -81,8 +81,9 @@ var addToDefaultCaptions = function(caption) {
 }
 
 var optionallyUseDefaultCaption = function(caption) {
-	if (caption.length == 0 ||
-		Math.random() < defaultCaptionProbability) {
+	if (defaultCaptions.length > 0 &&
+		(caption.length == 0 ||
+		 Math.random() < defaultCaptionProbability)) {
 		defaultCaptions.randomize();
 		return defaultCaptions[0];
 	} else {
@@ -111,13 +112,12 @@ var setCatcher = function(poster) {
 }
 
 var splitCaption = function(caption) {
-	return splitLineBySeparators(caption, ["\n", ".", "-", ",", " "]);
+	return splitLineBySeparators(caption, ["\n", ".", "-", ",", ":", " "]);
 }
 
 var splitLineBySeparators = function(line, separators) {
 	var sep = separators.shift();
-	var lines = line.split(sep);
-	appendSeparator(lines, sep);
+	var lines = splitNonEmpty(line, sep);
 	switch (lines.length) {
 		case 1:
 			if (separators.length == 0) {
@@ -130,6 +130,15 @@ var splitLineBySeparators = function(line, separators) {
 		default:
 			return randomJoinLines(lines);
 	}
+}
+
+var splitNonEmpty = function(line, separator) {
+	var lines = line.split(separator);
+	appendSeparator(lines, separator);
+	if (lines[lines.length - 1].length == 0) {
+		lines.pop();
+	}
+	return lines;
 }
 
 var appendSeparator = function(lines, separator) {
