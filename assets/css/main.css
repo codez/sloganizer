@@ -1,19 +1,8 @@
 /* --------------------------------- */
 /* nüt ändere hie                    */
 
-
-@font-face{
-font-family:'TempoW01-HeavyCondensed 707008';
-src:url('../fonts/276e1c07-aed5-48ed-bfae-fb57d3d6310a.eot?#iefix');
-src:url('../fonts/276e1c07-aed5-48ed-bfae-fb57d3d6310a.eot?#iefix') format('eot'),url('../fonts/b36c4ec1-a0b3-42a9-b4b2-b4c251bcc5f5.woff') format('woff'),url('../fonts/c78b9a30-a233-4793-825c-8f1e1e0201cf.ttf') format('truetype'),url('../fonts/1ea97f50-fbd7-47f4-bf2b-f354922417b7.svg#1ea97f50-fbd7-47f4-bf2b-f354922417b7') format('svg');
-font-weight: 800;
-font-style: normal;
-}
-
 .tempo {
-	font-family: 'TempoW01-HeavyCondensed 707008', sans-serif;
-	font-weight: 800;
-	font-style: normal;
+
 }
 
 html {
@@ -28,7 +17,6 @@ body {
 img {
     vertical-align: middle;
 }
-
 
 /* column layout */
 
@@ -52,31 +40,44 @@ img {
 }
 
 
-
 /* layout */
 
 .claim {
 	position: absolute;
-	top: 6%;
-	width: 66.6667%;
-
-	-webkit-transform: rotate(-15.5deg) skewX(-15.5deg);
-	margin-left: -6px;
+	left: 16.66667%;
+	top: 70%;
+	width: 70%;
+	font-family: 'Courier New', sans-serif;
+	font-weight: 600;
+	font-style: normal;
+	font-size: 22px;
+	color: white;
 	z-index: 500;
+	border: 5px solid white;
+	background-color: black;
+	padding: 0px 15px; 
 }
 
 .claim > div {
-	color: #e75294;
-	background: #ff0;
-
-	padding-left: 10px;
-	padding-right: 5px;
-
-	line-height: 1;
-
-	text-transform: uppercase;
-
+	line-height: 1.1;
 	margin-bottom: 10px;
+	clear: both;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.claim > div > .left {
+	float: left;
+}
+
+.claim > div > .right {
+	float: right;
+	text-align: right;
+}
+
+.claim > div > .center {
+	text-align: center;
+	display: block;
 }
 
 
