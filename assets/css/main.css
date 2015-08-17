@@ -39,7 +39,6 @@ img {
 	position: relative;
 }
 
-
 /* layout */
 
 .claim {
@@ -47,7 +46,7 @@ img {
 	left: 16.66667%;
 	top: 70%;
 	width: 70%;
-	font-family: 'Courier New', sans-serif;
+	font-family: 'Trixie-Plain', 'Courier New', sans-serif;
 	font-weight: 600;
 	font-style: normal;
 	font-size: 22px;
@@ -55,7 +54,7 @@ img {
 	z-index: 500;
 	border: 5px solid white;
 	background-color: black;
-	padding: 0px 15px; 
+	padding: 0px 10px;
 }
 
 .claim > div {
@@ -80,6 +79,10 @@ img {
 	display: block;
 }
 
+
+img.picture {
+	-webkit-filter: saturate(15%) contrast(170%);
+}
 
 
 /* http://freqdec.github.io/slabText/ */

@@ -5,7 +5,7 @@ var imagesPath = 'images/';
 
 var defaultCrimeSource = 'claims.json';
 var defaultCrimes = [];
-var defaultCrimeProbability = 0.0;
+var defaultCrimeProbability = 0.2;
 
 var catcherPath = 'catcher/';
 var catcherSource = 'catchers.json';
@@ -83,7 +83,7 @@ var placeClaim = function(poster) {
 														"skewY(" + randomRange(3) + "deg) " +
 														"rotate(" + randomRange(4) + "deg) " +
 													  "translateX(" + randomRange(30) + "px) " +
-													  "translateY(" + randomRange(30) + "px) " +
+													  "translateY(" + randomRange(50) + "px) " +
 													  "scale(" + scale + "," + scale + ")");
 }
 
