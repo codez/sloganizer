@@ -81,15 +81,15 @@ var placeClaim = function(poster) {
 	$(poster + " .claim").css("-webkit-transform",
 	                          "skewX(" + randomRange(1) + "deg) " +
 														"skewY(" + randomRange(3) + "deg) " +
-														"rotate(" + randomRange(4) + "deg) " +
+														"rotate(" + randomRange(5) + "deg) " +
 													  "translateX(" + randomRange(30) + "px) " +
-													  "translateY(" + randomRange(50) + "px) " +
+													  "translateY(" + randomRange(60) + "px) " +
 													  "scale(" + scale + "," + scale + ")");
 }
 
 var randomRange = function(range) {
 	return 2.0 * range * Math.random() - range;
-	//return range;
+	//return -range;
 }
 
 var getRandomCrime = function(slogan) {
@@ -200,8 +200,31 @@ var loadCatchers = function() {
 	});
 }
 
+var requestFullScreen = function() {
+	if (!document.fullscreenElement &&    // alternative standard method
+      !document.mozFullScreenElement &&
+			!document.webkitFullscreenElement &&
+			!document.msFullscreenElement ) {  // current working methods
+		var el = $('body').get(0);
+    if (el.requestFullscreen) {
+      el.requestFullscreen();
+    } else if (el.msRequestFullscreen) {
+      el.msRequestFullscreen();
+    } else if (el.mozRequestFullScreen) {
+      el.mozRequestFullScreen();
+    } else if (el.webkitRequestFullscreen) {
+      el.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+    }
+  }
+}
+
 $(function() {
 	loadDefaultCrimes();
-	loadCatchers();
+	//loadCatchers();
 	reloadSlogans();
+	$(document).on('keydown', function(e) {
+		if (e.keyCode == 13) {
+			requestFullScreen();
+		}
+	})
 });
