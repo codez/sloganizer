@@ -1,18 +1,11 @@
-var duration = 2; // seconds
+var duration = 8; // seconds
 
 var sloganSource = 'images/data.json';
 var imagesPath = 'images/';
 
-var defaultCrimeSource = 'claims.json';
+var defaultCrimeSource = 'crimes.json';
 var defaultCrimes = [];
-var defaultCrimeProbability = 0.2;
-
-var catcherPath = 'catcher/';
-var catcherSource = 'catchers.json';
-var catchers = [];
-var catcherProbability = 0.6;
-
-var lineLength = 60;
+var defaultCrimeProbability = 0.3;
 
 var side = 0;
 
@@ -29,7 +22,7 @@ Array.prototype.randomize = function() {
 }
 
 var reloadSlogans = function() {
-	$.getJSON(sloganSource, processSlogans);
+	$.ajax({ url: sloganSource, dataType: "json", success: processSlogans, cache: false })
 }
 
 var processSlogans = function(data) {
@@ -61,19 +54,16 @@ var showSlogan = function(slogan) {
 	var poster = "#poster" + side;
 	$(poster + " .picture").show().attr("src", imagesPath + slogan.image);
 
-	//var lines = splitCaption(getRandomCaption(slogan));
 	var crime = getRandomCrime(slogan);
 	var date = new Date(slogan.date);
 	var dateString = $.format.date(date, "yyyyMMdd");
 	var timeString = $.format.date(date, "SSS-HH:mm:ss");
-	//changeCaptionLine(poster, 'Kollerweg Police Dept.', ' .line0 .center');
 	changeCaptionLine(poster, timeString, ' .line1 .left');
 	changeCaptionLine(poster, dateString, ' .line1 .right');
 	changeCaptionLine(poster, slogan.name || '&nbsp;', ' .line2 .center');
 	changeCaptionLine(poster, crime || '&nbsp;', ' .line3 .left');
 
 	placeClaim(poster);
-	//setCatcher(poster);
 }
 
 var placeClaim = function(poster) {
@@ -116,13 +106,7 @@ var optionallyUseDefaultCrime = function(crime) {
 }
 
 var changeCaptionLine = function(poster, line, css) {
-	//var width = Math.floor(60 + Math.random() * 50);
 	$(poster + css).html(line);
-	//$(poster + css + ".slabtextdone").
-	//	removeClass('slabtextdone').
-	//	addClass('slabtextinactive').
-	//	attr('style', 'width: ' + width + '%').
-	//	slabText({maxFontSize: 144});
 }
 
 var setCatcher = function(poster) {
@@ -190,16 +174,6 @@ var loadDefaultCrimes = function() {
 	});
 }
 
-var loadCatchers = function() {
-	$.getJSON(catcherSource, function(data) {
-		catchers = data;
-		$.each(data, function(i, catcher) {
-			var img = new Image();
-			img.src = catcherPath + catcher;
-		});
-	});
-}
-
 var requestFullScreen = function() {
 	if (!document.fullscreenElement &&    // alternative standard method
       !document.mozFullScreenElement &&
@@ -220,7 +194,6 @@ var requestFullScreen = function() {
 
 $(function() {
 	loadDefaultCrimes();
-	//loadCatchers();
 	reloadSlogans();
 	$(document).on('keydown', function(e) {
 		if (e.keyCode == 13) {
